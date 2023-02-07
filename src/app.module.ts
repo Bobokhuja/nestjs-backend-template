@@ -1,17 +1,18 @@
-import { CacheModule, Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-import { UserModule } from './user/user.module'
-import { ConfigModule } from '@nestjs/config'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { User } from './user/entities/user.entity'
-import { AuthModule } from './auth/auth.module'
-import { FilesModule } from './files/files.module'
-import { ServeStaticModule } from '@nestjs/serve-static'
-import { join } from 'path'
-import { ImageModule } from './image/image.module'
-import { Image } from './image/entity/image.entity'
-import { FileLogger } from 'typeorm'
+import {CacheModule, Module} from '@nestjs/common'
+import {AppController} from './app.controller'
+import {AppService} from './app.service'
+import {UserModule} from './user/user.module'
+import {ConfigModule} from '@nestjs/config'
+import {TypeOrmModule} from '@nestjs/typeorm'
+import {User} from './user/entities/user.entity'
+import {AuthModule} from './auth/auth.module'
+import {FilesModule} from './files/files.module'
+import {ServeStaticModule} from '@nestjs/serve-static'
+import {join} from 'path'
+import {ImageModule} from './image/image.module'
+import {Image} from './image/entity/image.entity'
+import {RoleModule} from './role/role.module'
+import {Role} from './role/entities/role.entity'
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { FileLogger } from 'typeorm'
       entities: [
         User,
         Image,
+        Role
       ],
       synchronize: true,
       autoLoadEntities: true
@@ -44,6 +46,7 @@ import { FileLogger } from 'typeorm'
     AuthModule,
     FilesModule,
     ImageModule,
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [
